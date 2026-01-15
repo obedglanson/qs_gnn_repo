@@ -1,0 +1,338 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7f6bb5da-ffbd-49a3-baa2-506ae41694a3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import torch\n",
+    "import matplotlib.pyplot as plt\n",
+    "from rdkit import Chem\n",
+    "from rdkit.Chem import AllChem, Draw\n",
+    "from rdkit.Chem.Draw import SimilarityMaps\n",
+    "from torch_geometric.data import Data\n",
+    "from IPython.display import Image, display"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2c5d4688-eca1-40b1-bc16-5d99b17b9252",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def morgan_bit_to_atom_map(mol, radius=2, nBits=2048):\n",
+    "    bitInfo = {}\n",
+    "    _ = AllChem.GetMorganFingerprintAsBitVect(\n",
+    "        mol,\n",
+    "        radius=radius,\n",
+    "        nBits=nBits,\n",
+    "        bitInfo=bitInfo\n",
+    "    )\n",
+    "\n",
+    "    bit_atom_map = {}\n",
+    "\n",
+    "    for bit, info in bitInfo.items():\n",
+    "        atoms = set()\n",
+    "        for atom_idx, rad in info:\n",
+    "            atoms.add(atom_idx)\n",
+    "        bit_atom_map[bit] = atoms\n",
+    "\n",
+    "    return bit_atom_map"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b44ffc34-6d0d-4803-87d2-b1a89df1320b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def compute_bit_importance(model, fps_input):\n",
+    "    model.eval()\n",
+    "\n",
+    "    fps_input_tensor = fps_input.clone().detach().to(DEVICE)\n",
+    "   \n",
+    "    all_importances_per_mol = []\n",
+    "\n",
+    "    \n",
+    "    if not graphs: \n",
+    "        raise ValueError(\"Global 'graphs' variable is empty or not defined.\")\n",
+    "       \n",
+    "    sample_graph_template = graphs[0].to(DEVICE).clone()\n",
+    "    \n",
+    "    sample_graph_template.x.requires_grad_(False)\n",
+    "    sample_graph_template.edge_index.requires_grad_(False)\n",
+    "    if sample_graph_template.edge_attr is not None:\n",
+    "        sample_graph_template.edge_attr.requires_grad_(False)\n",
+    "   \n",
+    "    for i in range(fps_input_tensor.shape[0]):\n",
+    "        current_fp_single_mol = fps_input_tensor[i:i+1].clone()\n",
+    "        current_fp_single_mol.requires_grad_(True) \n",
+    "\n",
+    "        dummy_data_for_mol = Data(\n",
+    "            x=sample_graph_template.x,\n",
+    "            edge_index=sample_graph_template.edge_index,\n",
+    "            edge_attr=sample_graph_template.edge_attr,\n",
+    "            fp=current_fp_single_mol \n",
+    "        )\n",
+    "        dummy_data_for_mol.batch = torch.zeros(sample_graph_template.x.size(0), dtype=torch.long, device=DEVICE)\n",
+    "        dummy_data_for_mol.num_graphs = 1\n",
+    "\n",
+    "        _, _, logits = model(dummy_data_for_mol) \n",
+    "       \n",
+    "        output_scalar = logits.mean() \n",
+    "\n",
+    "        model.zero_grad()\n",
+    "       \n",
+    "        output_scalar.backward()\n",
+    "\n",
+    "        if current_fp_single_mol.grad is not None:\n",
+    "            importance = (current_fp_single_mol.grad * current_fp_single_mol).detach().cpu().numpy()\n",
+    "            all_importances_per_mol.append(importance.flatten())\n",
+    "        else:\n",
+    "            all_importances_per_mol.append(np.zeros(fps_input_tensor.shape[1]))\n",
+    "           \n",
+    "    if all_importances_per_mol:\n",
+    "        return np.array(all_importances_per_mol).mean(axis=0)\n",
+    "    else:\n",
+    "        return np.zeros(fps_input_tensor.shape[1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7fa3c25a-a6f4-4ce5-b7d5-96f32a0197ee",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "bit_importance = compute_bit_importance(model, fps)\n",
+    "print(\"Bit importance shape:\", bit_importance.shape)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b980818a-980c-4a2d-afff-197b8f0c77d9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def compute_atom_importance(smiles, bit_importance, radius=2, nBits=2048):\n",
+    "    mol = Chem.MolFromSmiles(smiles)\n",
+    "    bit_atom_map = morgan_bit_to_atom_map(mol, radius, nBits)\n",
+    "\n",
+    "    atom_scores = np.zeros(mol.GetNumAtoms())\n",
+    "\n",
+    "    for bit, atoms in bit_atom_map.items():\n",
+    "        for atom in atoms:\n",
+    "            atom_scores[atom] += bit_importance[bit]\n",
+    "\n",
+    "    if np.max(np.abs(atom_scores)) > 0:\n",
+    "        atom_scores /= np.max(np.abs(atom_scores))\n",
+    "\n",
+    "    return atom_scores"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e1591436-c649-407e-976a-9a8f5fcd4d29",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def visualize_atom_importance(smiles, atom_scores):\n",
+    "    mol = Chem.MolFromSmiles(smiles)\n",
+    "    if mol is None:\n",
+    "        raise ValueError(\"Invalid SMILES string\")\n",
+    "\n",
+    "\n",
+    "    atom_scores = atom_scores.tolist()\n",
+    "\n",
+    "    drawer = Draw.MolDraw2DCairo(300, 250) \n",
+    "\n",
+    "    SimilarityMaps.GetSimilarityMapFromWeights(\n",
+    "        mol,\n",
+    "        atom_scores,\n",
+    "        colorMap=plt.cm.coolwarm,\n",
+    "        contourLines=10,\n",
+    "        draw2d=drawer \n",
+    "    )\n",
+    "\n",
+    "    drawer.FinishDrawing()\n",
+    "    png = drawer.GetDrawingText()\n",
+    "    \n",
+    "    display(Image(png))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ea968d6a-1c86-45e2-a44b-accf764bbf6e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "smiles_example = smiles[0] \n",
+    "\n",
+    "atom_scores = compute_atom_importance(\n",
+    "    smiles_example,\n",
+    "    bit_importance\n",
+    ")\n",
+    "\n",
+    "visualize_atom_importance(smiles_example, atom_scores)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "957f023b-d04e-4ae6-9a8e-ded6595b6074",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from collections import defaultdict\n",
+    "from rdkit.Chem import AllChem\n",
+    "\n",
+    "def get_morgan_bits(smile, radius=2, nBits=2048):\n",
+    "    mol = Chem.MolFromSmiles(smile)\n",
+    "    bitInfo = {}\n",
+    "    AllChem.GetMorganFingerprintAsBitVect(\n",
+    "        mol, radius, nBits=nBits, bitInfo=bitInfo\n",
+    "    )\n",
+    "    return set(bitInfo.keys()), bitInfo\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "28b9611b-1e17-4d44-be94-f78cd75df095",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "active_bits = defaultdict(int)\n",
+    "inactive_bits = defaultdict(int)\n",
+    "\n",
+    "for s, y in zip(smiles, labels.numpy()):\n",
+    "    bits, _ = get_morgan_bits(s)\n",
+    "    for b in bits:\n",
+    "        if y == 1:\n",
+    "            active_bits[b] += 1\n",
+    "        else:\n",
+    "            inactive_bits[b] += 1\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "41439d89-8978-490c-ac01-bec0ee5f9c78",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from scipy.stats import fisher_exact\n",
+    "\n",
+    "results = []\n",
+    "\n",
+    "N_active = int((labels == 1).sum())\n",
+    "N_inactive = int((labels == 0).sum())\n",
+    "\n",
+    "for bit in active_bits:\n",
+    "    a = active_bits[bit]\n",
+    "    b = inactive_bits.get(bit, 0)\n",
+    "    c = N_active - a\n",
+    "    d = N_inactive - b\n",
+    "\n",
+    "    _, p = fisher_exact([[a, b], [c, d]], alternative='greater')\n",
+    "\n",
+    "    results.append((bit, a, b, p))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1e0da5d1-3901-4102-b1f6-715f9d756d11",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "from statsmodels.stats.multitest import multipletests\n",
+    "\n",
+    "df = pd.DataFrame(results, columns=[\"bit\", \"active\", \"inactive\", \"p\"])\n",
+    "df[\"q\"] = multipletests(df[\"p\"], method=\"fdr_bh\")[1]\n",
+    "\n",
+    "enriched = df[df[\"p\"] < 0.01].sort_values(\"p\")\n",
+    "\n",
+    "enriched.head(10)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e9f17a71-e317-4b68-b72c-8be3888f44be",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def draw_bit_substructure(smile, bit):\n",
+    "    mol = Chem.MolFromSmiles(smile)\n",
+    "    _, bitInfo = get_morgan_bits(smile)\n",
+    "    if bit not in bitInfo:\n",
+    "        return None\n",
+    "\n",
+    "    atom_ids = [a for a, r in bitInfo[bit]]\n",
+    "    return Draw.MolToImage(\n",
+    "        Chem.PathToSubmol(mol, atom_ids), size=(200, 200)\n",
+    "    )\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8df6c737-7777-4e83-b292-3b04f6ba1065",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Number of enriched substructures:\", len(enriched))\n",
+    "enriched.head(10)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d8ddb1a6-96b9-4576-bc85-1d26ccc4a35f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "top_bit = enriched.iloc[0][\"bit\"]\n",
+    "\n",
+    "for s, y in zip(smiles, labels.numpy()):\n",
+    "    if y == 1:\n",
+    "        bits, bitInfo = get_morgan_bits(s)\n",
+    "        if top_bit in bits:\n",
+    "            img = draw_bit_substructure(s, top_bit)\n",
+    "            display(img)\n",
+    "            break\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:anaconda3-QSI_RDKIT]",
+   "language": "python",
+   "name": "conda-env-anaconda3-QSI_RDKIT-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.25"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
