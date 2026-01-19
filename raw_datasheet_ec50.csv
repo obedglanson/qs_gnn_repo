@@ -1,0 +1,56 @@
+Article,Compound Name,RAW SMILES,Active,EC50 (uM),LogP,MW (g/mol),TPSA (Å²) ,RB,HBD,HBA,Checked?
+10.1016/j.bmc.2018.05.018,"N-3-Oxo-Dodecanoyl-L-Homoserine Lactone",CCCCCCCCCC(=O)CC(=O)N[C@H]1CCOC1=O,Yes,0.001507,4.1,297.39,72.5,11,1,4,Y
+10.1016/j.bmc.2018.05.018,3-oxo-N-[(3S)-2-oxothiolan-3-yl]dodecanamide,CCCCCCCCCC(=O)CC(=O)N[C@H]1CCSC1=O,Yes,0.001532,4.1,313.5,88.5,11,1,4,Y
+10.1016/j.bmc.2018.05.018,"3-oxo-N-[(1S)-2-oxocyclopentyl]dodecanamide","CCCCCCCCCC(=O)CC(=O)N[C@H]1CCCC1=O",Yes,0.01491,4.3,295.4,63.2,11,1,3,Y
+10.1016/j.bmc.2018.05.018,"3-oxo-N-[(3S)-2-oxopyrrolidin-3-yl]dodecanamide","CCCCCCCCCC(=O)CC(=O)N[C@H]1CCNC1=O",Yes,0.02966,3.5,296.4,75.3,11,2,3,Y
+10.1016/j.bmc.2018.05.018,"N-(3-oxododecanoyl)-D-homoserine lactone","CCCCCCCCCC(=O)CC(=O)N[C@@H]1CCOC1=O",Yes,0.1102,4.1,297.39,72.5,11,1,4,Y
+10.1016/j.bmc.2018.05.018,N-cyclopentyl-3-oxododecanamide,"CCCCCCCCCC(=O)CC(=O)NC1CCCC1",Yes,0.1623,5.3,281.4,46.2,11,1,2,Y
+10.1016/j.bmc.2018.05.018,"3-oxo-N-(oxolan-2-ylmethyl)dodecanamide","CCCCCCCCCC(=O)CC(=O)NCC1CCCO1",Yes,0.2556,3.9,297.4,55.4,12,1,3,Y
+10.1016/j.bmc.2018.05.018,3-oxo-N-[(3S)-oxolan-3-yl]dodecanamide,"CCCCCCCCCC(=O)CC(=O)N[C@H]1CCOC1",Yes,0.9061,4.1,283.41,55.4,11,1,3,Y
+10.1016/j.bmc.2018.05.018,"N-[(2S,3S)-2-hydroxyoxolan-3-yl]-3-oxododecanamide","CCCCCCCCCC(=O)CC(=O)N[C@H]1CCO[C@@H]1O",Yes,1.883,3.6,299.41,75.6,11,2,4,Y
+10.1021/jm901742e,"N-(3-oxodecanoyl)-L-homoserine lactone",CCCCCCCC(=O)CC(=O)N[C@H]1CCOC1=O,Yes,0.015,3,269.34,72.5,9,1,4,Y
+10.1021/jm901742e,(E)-3-oxo-N-[(3S)-2-oxooxolan-3-yl]dodec-6-enamide,CCCCC/C=C/CCC(=O)CC(=O)N[C@H]1CCOC1=O,Yes,0.01,3.4,295.37,72.5,10,1,4,Y
+10.1021/jm901742e,"N-(3-Oxotetradecanoyl)-L-homoserine lactone","CCCCCCCCCCCC(=O)CC(=O)N[C@H]1CCOC1=O",Yes,0.015,5.2,325.4,72.5,13,1,4,Y
+10.1021/jm901742e,"3-Hydroxy-N-((S)-2-oxotetrahydrofuran-3-yl)dodecanamide","CCCCCCCCCC(CC(=O)N[C@H]1CCOC1=O)O",Yes,0.054,4,299.41,75.6,11,2,4,Y
+10.1016/j.bmc.2019.115282,"[2,4-dioxo-4-[[(3S)-2-oxooxolan-3-yl]amino]butyl] thiocyanate","C1COC(=O)[C@H]1NC(=O)CC(=O)CSC#N",Yes,0.017,0.8,242.25,122,5,1,6,Y
+10.1021/ml500459f,"[2,4-Dibromo-6-[[(2-nitrobenzoyl)amino]methyl]phenyl] 4-(2,5-dioxopyrrolidin-1-yl)butanoate",C1CC(=O)N(C1=O)CCCC(=O)OC2=C(C=C(C=C2Br)Br)CNC(=O)C3=CC=CC=C3[N+](=O)[O-],Yes,0.119,2.9,597.2,139,9,1,7,Y
+10.1016/j.bmc.2019.115282,3-oxo-N-(2-oxocyclohexyl)pentanamide,CCC(=O)CC(=O)NC1CCCCC1=O,Yes,0.24,1.1,211.26,63.2,4,1,3,Y
+10.1016/j.bmc.2019.115282,"2-(3-bromophenoxy)-N-[(3S)-2-oxothiolan-3-yl]acetamide","C1CSC(=O)[C@H]1NC(=O)COC2=CC(=CC=C2)Br",Yes,0.013,2,330.2,80.7,4,1,4,Y
+10.1016/j.bmc.2019.115282,"[2,4-Dibromo-6-[[(2-chlorobenzoyl)amino]methyl]phenyl] 2-nitrobenzoate",C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CNC(=O)C3=CC=CC=C3Cl)[N+](=O)[O-],Yes,0.0078,5.9,568.6,101,6,1,5,Y
+10.1021/ml500459f,"2,4-Dibromo-6-({[(2-nitrophenyl)carbonyl]amino}methyl)phenyl 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)NCC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=CC=CC=C3Cl)[N+](=O)[O-]",Yes,0.028,5.9,568.6,101,6,1,5,Y
+10.1016/j.bmc.2019.115282,"N-(2-hydroxyphenyl)-3-oxopentanamide","CCC(=O)CC(=O)NC1=CC=CC=C1O",Yes,0.096,1.6,207.23,66.4,4,2,3,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[(pyridine-3-carbonylamino)methyl]phenyl] 2-chlorobenzoate",C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CNC(=O)C3=CN=CC=C3)Cl,Yes,0.000488,5,524.6,68.3,6,1,4,Y
+10.1016/j.bmc.2016.10.021,"[2,4-dibromo-6-[2-oxo-2-[[(3S)-2-oxooxolan-3-yl]amino]ethyl]phenyl] 2-chlorobenzoate","C1COC(=O)[C@H]1NC(=O)CC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=CC=CC=C3Cl",Yes,0.000896,4.6,531.6,81.7,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2,3-difluoroanilino)-2-oxoethyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=C(C(=CC=C3)F)F)Cl",Yes,0.0456,6.3,559.6,55.4,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"2-[3,5-dibromo-2-[(2,6-dichlorophenyl)methoxy]phenyl]-N-(2-nitrophenyl)acetamide","C1=CC=C(C(=C1)NC(=O)CC2=C(C(=CC(=C2)Br)Br)OCC3=C(C=CC=C3Cl)Cl)[N+](=O)[O-]",Yes,0.161,7.2,589.1,84.2,6,1,4,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2-methoxybenzoate",COC1=CC=CC=C1C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-],Yes,0.246,5.8,564.2,110,7,1,6,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2-bromobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-])Br",Yes,0.271,6.6,613,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2,6-dichlorobenzoate","C1=CC=C(C(=C1)NC(=O)CC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=C(C=CC=C3Cl)Cl)[N+](=O)[O-]",Yes,0.313,7.1,603,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(4,5-difluoro-2-nitroanilino)-2-oxoethyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC(=C(C=C3[N+](=O)[O-])F)F)Cl",Yes,0.335,6.7,604.6,101,6,1,7,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-])Cl",Yes,0.372,6.5,568.6,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2-bromo-4-fluorobenzoate","C1=CC=C(C(=C1)NC(=O)CC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=C(C=C(C=C3)F)Br)[N+](=O)[O-]",Yes,0.436,6.7,631,101,6,1,6,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-[(3-nitro-4-pyridinyl)amino]-2-oxoethyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=C(C=NC=C3)[N+](=O)[O-])Cl",Yes,0.446,5.4,569.6,114,6,1,6,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2-nitrobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-])[N+](=O)[O-]",Yes,0.489,5.7,579.2,147,6,1,7,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-oxo-2-(pyrimidin-4-ylamino)ethyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=NC=NC=C3)Cl",Yes,0.601,4.7,525.6,81.2,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2-methylbenzoate","CC1=CC=CC=C1C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-]",Yes,0.757,6.2,548.2,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2-fluorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-])F",Yes,1.29,6,552.1,101,6,1,6,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 2-iodobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-])I",Yes,1.58,6.5,660,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[(pyrimidine-4-carbonylamino)methyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CNC(=O)C3=NC=NC=C3)Cl",Yes,1.63,4.7,525.6,81.2,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(4-nitroanilino)-2-oxoethyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=C(C=C3)[N+](=O)[O-])Cl",No,50,5.9,568.6,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[(pyridine-2-carbonylamino)methyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CNC(=O)C3=CC=CC=N3)Cl",No,50,5.4,524.6,68.3,6,1,4,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 3-methylbenzoate","CC1=CC(=CC=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-]",No,50,6.2,548.2,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 4-chlorobenzoate","C1=CC=C(C(=C1)NC(=O)CC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=CC=C(C=C3)Cl)[N+](=O)[O-]",No,50,6.5,568.6,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[[(2,3-difluorobenzoyl)amino]methyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CNC(=O)C3=C(C(=CC=C3)F)F)Cl",No,50,6.3,559.6,55.4,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 3-chlorobenzoate","C1=CC=C(C(=C1)NC(=O)CC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=CC(=CC=C3)Cl)[N+](=O)[O-]",No,50,6.5,568.6,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 3-bromobenzoate","C1=CC=C(C(=C1)NC(=O)CC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=CC(=CC=C3)Br)[N+](=O)[O-]",No,50,6.6,613,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] benzoate","C1=CC=C(C=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-]",No,50,5.9,534.2,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-oxo-2-(pyridin-2-ylamino)ethyl]phenyl] 2-chlorobenzoate","C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=N3)Cl",No,50,5.4,524.6,68.3,6,1,4,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 4-methylbenzoate","CC1=CC=C(C=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC=CC=C3[N+](=O)[O-]",No,50,6.2,548.2,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 4-bromobenzoate","C1=CC=C(C(=C1)NC(=O)CC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=CC=C(C=C3)Br)[N+](=O)[O-]",No,50,6.6,613,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(3-nitroanilino)-2-oxoethyl]phenyl] 2-chlorobenzoate",C1=CC=C(C(=C1)C(=O)OC2=C(C=C(C=C2Br)Br)CC(=O)NC3=CC(=CC=C3)[N+](=O)[O-])Cl,No,50,5.9,568.6,101,6,1,5,Y
+10.1016/j.bmc.2016.10.021,"[2,4-Dibromo-6-[2-(2-nitroanilino)-2-oxoethyl]phenyl] 4-fluorobenzoate","C1=CC=C(C(=C1)NC(=O)CC2=C(C(=CC(=C2)Br)Br)OC(=O)C3=CC=C(C=C3)F)[N+](=O)[O-]",No,50,6,552.1,101,6,1,6,Y
+10.1016/j.bmc.2011.06.071,"3-(1H-indol-2-yl)-N-[(3S)-2-oxothiolan-3-yl]propanamide","C1CSC(=O)[C@H]1NC(=O)CCC2=CC3=CC=CC=C3N2",Yes,1.8,2.2,288.4,87.3,4,2,3,Y
+10.1016/j.bmc.2011.06.071,"2-(3-nitrophenyl)-N-[(3S)-2-oxothiolan-3-yl]acetamide","C1CSC(=O)[C@H]1NC(=O)CC2=CC(=CC=C2)[N+](=O)[O-]",Yes,4.1,1.6,280.3,117,3,1,5,Y
+10.1016/j.bmcl.2008.07.089,"(S)-N-(2-oxotetrahydrofuran-3-yl)-3-(4-(trifluoromethyl)phenyl)propanamide",C1COC(=O)[C@H]1NC(=O)CCC2=CC=C(C=C2)C(F)(F)F,Yes,3.4,2.4,301.26,55.4,4,1,6,Y
+10.1016/j.bmcl.2008.07.089,"2-[3,5-bis(trifluoromethyl)phenyl]-N-[(3S)-2-oxooxolan-3-yl]acetamide","C1COC(=O)[C@H]1NC(=O)CC2=CC(=CC(=C2)C(F)(F)F)C(F)(F)F",Yes,6.3,3,355.23,55.4,3,1,9,Y
+10.1039/C5MD00015G,"3-oxo-N-(2-oxo-1,3-oxazolidin-3-yl)dodecanamide","CCCCCCCCCC(=O)CC(=O)NN1CCOC1=O",Yes,0.0021,3.9,298.38,75.7,10,1,4,Y
